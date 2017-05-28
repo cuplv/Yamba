@@ -180,7 +180,8 @@ public class StatusFragment extends Fragment {
 		// Called after doInBackground() on UI thread
 		@Override
 		protected void onPostExecute(String result) {
-			progress.dismiss();
+			if(isVisible()) //dismiss throws exception if activity is not visible.
+				progress.dismiss();
 			if (getActivity() != null && result != null)
 				Toast.makeText(getActivity(), result, Toast.LENGTH_LONG).show();
 		}
